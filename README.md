@@ -12,7 +12,7 @@ JoinConfig join = network.getJoin();
 join.getMulticastConfig().setMulticastGroup(MULTICAST_GROUP);
 ```
 
-Run
+Run locally
 ```
 java -Dquarkus.http.port=8080 -jar target/quarkus-hazelcast-1.0.0-SNAPSHOT-runner.jar
 ```
