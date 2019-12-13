@@ -6,7 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/create")
-public class ExampleResource {
+public class APIResource {
 
     final HazelcastBeanFactory hazelcastBeanFactory = new HazelcastBeanFactory();
 
