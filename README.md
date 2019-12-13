@@ -29,3 +29,16 @@ Add hazelcast member
 ```asciidoc
 http localhost:8080/create
 ```
+
+OpenShift
+```
+oc new-project quarkus-hazelcast
+oc new-build --binary --name=quarkus-hazelcast -l app=quarkus-hazelcast --strategy=docker
+oc start-build quarkus-hazelcast --from-dir=. --follow
+oc new-app quarkus-hazelcast
+oc expose svc/quarkus-hazelcast
+
+export HOST=http://$(oc get route quarkus-hazelcast --template='{{ .spec.host }}')
+
+http $HOST/create
+```

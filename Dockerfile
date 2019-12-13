@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/ibmmq-quarkus-camel-jvm .
+# docker build -f Dockerfile -t quarkus-hazelcast .
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/ibmmq-quarkus-camel-jvm
+# docker run -i --rm -p 8080:8080 quarkus-hazelcast
 #
 ###
 FROM fabric8/java-alpine-openjdk8-jre
