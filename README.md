@@ -42,3 +42,12 @@ export HOST=http://$(oc get route quarkus-hazelcast --template='{{ .spec.host }}
 
 http $HOST/create
 ```
+
+For single pod, `/create` will cache multiple members per jvm.
+
+If you wish to use multicast in this project:
+```
+oc annotate netnamespace quarkus-hazelcast netnamespace.network.openshift.io/multicast-enabled=true
+``` 
+
+Scale pods >= 2 and they will now form cluster across and within pod members.
