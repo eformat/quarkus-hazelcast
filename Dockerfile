@@ -19,7 +19,7 @@ ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jb
 ENV AB_ENABLED=jmx_exporter
 COPY target/lib/* /deployments/lib/
 COPY target/*-runner.jar /deployments/app.jar
-EXPOSE 8080
+EXPOSE 8080 5701
 
 # run with user 1001 and be prepared for be running in OpenShift too
 RUN adduser -G root --no-create-home --disabled-password 1001 \

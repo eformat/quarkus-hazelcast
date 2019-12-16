@@ -11,22 +11,23 @@ import java.util.HashMap;
 @Singleton
 public class HazelcastBeanFactory extends HashMap<String, HazelcastInstance> {
 
-    //private Integer CLUSTER_SIZE = 2;
-    private int PORT = 5701;
-    private String MULTICAST_GROUP = "224.0.0.1";
-
-    public void create() {
+    public void create(String ENABLE_MULTICAST, String PORT, String MULTICAST_GROUP, String SERVICE_DNS_NAME) {
         Config cfg = new Config();
         //cfg.setProperty("hazelcast.initial.min.cluster.size", CLUSTER_SIZE.toString());
 
         NetworkConfig network = cfg.getNetworkConfig();
         network.setPortAutoIncrement(true);
-        network.setPort(PORT);
+        network.setPort(new Integer(PORT));
         //network.getInterfaces().setEnabled(true).addInterface("192.168.*.*");
 
         JoinConfig join = network.getJoin();
         join.getMulticastConfig().setMulticastGroup(MULTICAST_GROUP);
-        //join.getMulticastConfig().setEnabled(false);
+
+        // https://github.com/hazelcast/hazelcast-kubernetes#hazelcast-configuration-1
+        if (ENABLE_MULTICAST.compareTo("false") == 0) {
+            join.getMulticastConfig().setEnabled(false);
+            join.getKubernetesConfig().setEnabled(true).setProperty("service-dns", SERVICE_DNS_NAME);
+        }
 
         //join.getMulticastConfig().setMulticastTimeoutSeconds(60);
 
