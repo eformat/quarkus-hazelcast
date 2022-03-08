@@ -17,7 +17,7 @@
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>1.0.1.Final</quarkus.platform.version>
-        <hazelcast.version>3.12.5</hazelcast.version>
+        <hazelcast.version>5.1</hazelcast.version>
         <hazelcast.kubernetes.version>1.5.2</hazelcast.kubernetes.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
     </properties>
